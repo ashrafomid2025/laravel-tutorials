@@ -53,10 +53,9 @@ class StudentsController extends Controller
 
     public function fetchData(){
     //   $allStudent =   DB::table("students")->limit(3)->get();
-    //   return $allStudent;
-
-    $allStudents =  Students::orderBy("name", "asc")->all();
-    return $allStudents;
+    // score> 30
+     $allStudent =   Students::whereNotBetween("id", [7,15])->get();
+     return $allStudent;
      //   where, order by, limit, count, max, min , asc, desc
     } 
     public function update(){

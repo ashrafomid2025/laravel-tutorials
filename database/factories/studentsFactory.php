@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Students>
  */
-class studentsFactory extends Factory
+class StudentsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,6 +21,9 @@ class studentsFactory extends Factory
             "name"=> $this->faker->name(),
             "lastName"=> $this->faker->lastName(),
             "score"=> $this->faker->numberBetween(4,100),
+            "created_at"=> $this->faker->date(),
+            "updated_at"=>$this->faker->date(),
+            "age"=> $this->faker->numberBetween(10,70),
         ];
     }
 }
