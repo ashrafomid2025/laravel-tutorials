@@ -52,7 +52,7 @@ class StudentsController extends Controller
     }
 
     public function fetchData(){
-      $students =   Students::male()->get();
+      $students =   Students::all();
       return $students;
 
       //   $allStudent =   DB::table("students")->limit(3)->get();
@@ -104,9 +104,19 @@ class StudentsController extends Controller
         $student->update();
         return "updated successfully";
     }
+    
     public function delete(){
-        DB::table("students")->where("score","<", 10)->delete();
-        return "deleted successfully";
+      Students::findOrFail(2)->delete();
+       
+      return "One item deleted";
+      
     }
-
+    public function showDeletedData(){
+       $students = Students::withTrashed()->get();
+      return $students;
+    }
+    public function restoreData(){
+        Students::withTrashed()->findOrFail(1)->restore();
+        return "one item restored";
+    }
 }

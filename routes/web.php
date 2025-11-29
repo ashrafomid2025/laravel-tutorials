@@ -10,6 +10,8 @@ Route::get("addData", [StudentsController::class, 'addData']);
 Route::get("fetchData", [StudentsController::class, 'fetchData']);
 Route::get("update", [StudentsController::class, 'update']);
 Route::get("delete", [StudentsController::class, 'delete']);
+Route::get("showDeleted", [StudentsController::class, 'showDeletedData']);
+Route::get("restore", [StudentsController::class, 'restoreData']);
 Route::get("query1",[StudentsController::class,'firstQuery']);
 Route::get("query2",[StudentsController::class,'secondQuery']);
 Route::get("ladiesc",[StudentsController::class,'childLadies']);
