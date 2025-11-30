@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class StudentsController extends Controller
 {
     //
-
+    
     public function addData(){
         // eloquent orm object orinted relational mapping 
        $student =  new Students();

@@ -17,3 +17,9 @@ Route::get("query2",[StudentsController::class,'secondQuery']);
 Route::get("ladiesc",[StudentsController::class,'childLadies']);
 Route::get("ladiesy",[StudentsController::class,'YoungLadies']);
 Route::get("ladieso",[StudentsController::class,'oldLadies']);
+// resource controller crud, invokable create, read , delete, update
+// Route::view("excercise",'Excercise',['name'=> "Ali Ahmadi"]);
+Route::get('excercise', function(){
+    $name = "Ali Ahmadi";
+    return view('Excercise',compact('name'));
+});
