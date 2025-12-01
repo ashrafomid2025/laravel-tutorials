@@ -61,6 +61,19 @@ class StudentsController extends Controller
             ],'LIKE','%'.$request->search.'%');
          })->get();
     }
+
+    public function fetchStudents(Request $request){
+     $students =  Students::when($request->search, function($query) use($request){
+         $query->whereAny([
+             "name",
+             "lastName",
+             "age",
+             "gender",
+             "score"
+         ], 'LIKE','%'.$request->search.'%');
+     })->get();
+      return  view('Student.home', compact('students'));
+    }
     public function fetchData(){
       $students =   Students::all();
       return $students;

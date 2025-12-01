@@ -23,3 +23,6 @@ Route::get('excercise', function(){
     $name = "Ali Ahmadi";
     return view('Excercise',compact('name'));
 });
+Route::prefix('student')->controller(StudentsController::class)->group(function(){
+    Route::get('/', 'fetchStudents');
+});
