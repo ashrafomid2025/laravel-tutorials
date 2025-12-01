@@ -50,7 +50,17 @@ class StudentsController extends Controller
         // ]);
         // return "Data Inserted Successfully";
     }
-
+    
+    public function getData (Request $request){
+        $students =  Students::where($request->search, function($query) use($request){
+            return  $query->whereAny([
+              "name",
+              "lastName",
+              "age",
+              "date_of_birth"
+            ],'LIKE','%'.$request->search.'%');
+         })->get();
+    }
     public function fetchData(){
       $students =   Students::all();
       return $students;
