@@ -25,4 +25,6 @@ Route::get('excercise', function(){
 });
 Route::prefix('student')->controller(StudentsController::class)->group(function(){
     Route::get('/', 'fetchStudents');
+    Route::view('add','Student.add');
+    Route::post('create', 'create');
 });

@@ -59,43 +59,29 @@ class StudentsController extends Controller
               "age",
               "date_of_birth"
             ],'LIKE','%'.$request->search.'%');
-         })->get();
+         })->paginate(10);
     }
 
     public function fetchStudents(Request $request){
      $students =  Students::when($request->search, function($query) use($request){
-         $query->whereAny([
-             "name",
-             "lastName",
-             "age",
-             "gender",
-             "score"
-         ], 'LIKE','%'.$request->search.'%');
-     })->get();
+         $query->where("name", 'LIKE','%'.$request->search.'%');
+     })->paginate(15);
       return  view('Student.home', compact('students'));
+    }
+    public function create(Request $request){
+        $student =   new Students();
+        $student->name =$request->name;
+        $student->lastName = $request->lastname;
+        $student->score = $request->score;
+        $student->age= $request->age;
+        $student->gender= $request->gender;
+        $student->save();
+        return redirect("student");
     }
     public function fetchData(){
       $students =   Students::all();
       return $students;
 
-      //   $allStudent =   DB::table("students")->limit(3)->get();
-    // score> 30
-        // $students = Students::where("score",">",50)->where(function($query){
-        //     $query->where("age","<",18)->orWhere("age",">",30);
-        // })->get();
-        // return $students;
-        // score and age> 30
-        // $students = Students::where("score","<",30)->orWhere("age",">",50)->get();
-        //   text uppercase lowercase
-        // query score => 
-        // $students = Students::where("name","LIKE","%rn%")->orWhere("name","LIKE", "%RN%")->get();
-
-        // $students = Students::whereAll(["score", "age"],"=",58)->get();
-        
-     //   where, order by, limit, count, max, min , asc, desc
-    
-      
-    
     } 
     public function firstQuery(){
          $students =   Students::male()->get();

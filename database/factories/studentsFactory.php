@@ -21,9 +21,8 @@ class StudentsFactory extends Factory
             "name"=> $this->faker->name(),
             "lastName"=> $this->faker->lastName(),
             "score"=> $this->faker->numberBetween(4,100),
-            "created_at"=> $this->faker->date(),
-            "updated_at"=>$this->faker->date(),
-            
+            "created_at"=> $this->faker->dateTime(),
+            "updated_at"=>$this->faker->dateTime(),
             "age"=> $this->faker->numberBetween(10,70),
             "gender"=> $this->faker->randomElement(["m","f"]),
         ];

@@ -32,6 +32,9 @@
                 </tr>
             @endforeach
         </table>
+        <div class="flex flex-col gap-1.5">
+            {{ $students->appends(request()->query())->links() }}
+        </div>
     </div>
 </body>
 </html>
