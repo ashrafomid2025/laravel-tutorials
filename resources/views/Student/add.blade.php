@@ -18,8 +18,10 @@
                 <input type="number" name="score" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
                 <input type="number" name="age" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
                 <label>Gender</label>
+                <div class="flex gap-7 ">
                 male <input type="radio" name="gender" value="m"/>
                 female <input type="radio" name="gender" value="f"/>
+                </div>
                 <button type="submit" class="py-2 bg-green-400 text-white text-center">Save</button>
             </form>
         </div>
