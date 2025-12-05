@@ -20,7 +20,7 @@
                 <th class="border bg-blue-500 text-white px-4 py-2">Age</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">gender</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">Score</th>
-                <th class="border bg-blue-500 text-white px-4 py-2">delete or update</th>
+                <th class="border bg-blue-500 text-white px-4 py-2 " colspan="2">delete or update</th>
                 
             </tr>
             @foreach ($students as $stundent)
@@ -31,8 +31,14 @@
                     <td class="border px-4 py-2">{{ $stundent->age }}</td>
                     <td class="border px-4 py-2">{{ $stundent->gender }}</td>
                     <td class="border px-4 py-2">{{ $stundent->score }}</td>
-                    <td class="border px-4 py-2"><a href="{{ URL('student/update/').'/'.$stundent->id }}">Update</a></td>
-                    <td class="border px-4 py-2"><a href=""></a> </td>
+                    <td class="border px-4 py-2"><a href="{{ URL('student/update', $stundent->id) }}">Update</a></td>
+                    <td class="border px-4 py-2">
+                        <form action="{{ URL('student/delete',$stundent->id) }}" method="post" style="display:inline" onsubmit="return confirm('Do you really want to delete this item?')">
+                           @csrf
+                           @method('DELETE')
+                           <button type="submit">Delete</button>
+                        </form>
+                    
                 </tr>
             @endforeach
         </table>

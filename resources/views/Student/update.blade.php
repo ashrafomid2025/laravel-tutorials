@@ -10,8 +10,9 @@
     <div class="max-w-6xl w-full p-6 mx-auto my-12">
         <div class="border w-full">
             <h1 class="py-4 text-center text-2xl text-white bg-blue-500">Update Students</h1>
-            <form action="{{ URL('') }}" class="flex flex-col gap-2 w-10/12 mx-auto my-2" method="post">
+            <form action="{{ URL('student/edit',$student->id) }}" class="flex flex-col gap-2 w-10/12 mx-auto my-2" method="post">
                 @csrf
+                @method('PUT')
                 {{-- cross-site request forgery --}}
                 <input type="text" name="name" value="{{ $student->name }}" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
                 <input type="text" name="lastname" value="{{ $student->lastName }}" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">

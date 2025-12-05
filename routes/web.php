@@ -28,4 +28,6 @@ Route::prefix('student')->controller(StudentsController::class)->group(function(
     Route::view('add','Student.add');
     Route::post('create', 'create');
     Route::get("update/{id}", 'update');
+    Route::put("edit/{id}", 'edit');
+    Route::delete('delete/{id}', 'destroy');
 });
