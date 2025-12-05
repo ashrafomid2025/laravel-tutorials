@@ -20,6 +20,8 @@
                 <th class="border bg-blue-500 text-white px-4 py-2">Age</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">gender</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">Score</th>
+                <th class="border bg-blue-500 text-white px-4 py-2">delete or update</th>
+                
             </tr>
             @foreach ($students as $stundent)
                 <tr>
@@ -29,6 +31,8 @@
                     <td class="border px-4 py-2">{{ $stundent->age }}</td>
                     <td class="border px-4 py-2">{{ $stundent->gender }}</td>
                     <td class="border px-4 py-2">{{ $stundent->score }}</td>
+                    <td class="border px-4 py-2"><a href="{{ URL('student/update/').'/'.$stundent->id }}">Update</a></td>
+                    <td class="border px-4 py-2"><a href=""></a> </td>
                 </tr>
             @endforeach
         </table>

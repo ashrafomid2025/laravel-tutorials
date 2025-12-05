@@ -106,13 +106,10 @@ class StudentsController extends Controller
         $females = Students::female()->where("age",">",40)->get(); 
        return $females;
     }
-    public function update(){
-        $student = Students::find(2);
-        $student->name = "Ali";
-        $student->lastName = "Ahmadi";
-        $student->update();
-        return "updated successfully";
-    }
+     public function update($id){
+        $student = Students::findOrFail($id);
+         return view('Student.update', compact('student'));
+        }
     
     public function delete(){
       Students::findOrFail(2)->delete();
