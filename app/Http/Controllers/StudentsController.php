@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentsAddRequest;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -69,26 +70,8 @@ class StudentsController extends Controller
      })->paginate(15);
       return  view('Student.home', compact('students'));
     }
-    public function create(Request $request){
-      $request->validate([
-        "name"=> "required|string",
-        "lastname"=> "required|string",
-        "score"=> "required|numeric|min:0|max:100",
-        "age"=> "required|numeric|min:6|max:150",
-      ],
-      [
-        "name.required"=> "Name is required",
-        "lastname.required"=> "Last Name is required",
-        "score.required"=> "Score is required",
-        "age.required"=> "Age is required",
-        "score.numeric"=> "Score must be numeric",
-        "age.numeric"=> "Age must be numeric",
-        "score.min"=> "Score must be at least 0",
-        "score.max"=> "Score must not exceed 100",
-        "age.min"=> "Age must be at least 6",
-        "age.max"=> "Age must not exceed 150",
-      ]
-    );
+    public function create(StudentsAddRequest $request){
+    
         $student =   new Students();
         $student->name =$request->name;
         $student->lastName = $request->lastname;
