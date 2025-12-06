@@ -111,28 +111,23 @@ class StudentsController extends Controller
         $student = Students::findOrFail($id);
          return view('Student.update', compact('student'));
         }
-    public function edit(Request $request, $id){
-      $student = Students::findOrFail($id);
-       $student->name =$request->name;
-        $student->lastName = $request->lastname;
-        $student->score = $request->score;
-        $student->age= $request->age;
-        $student->gender= $request->gender;
-        $student->update();
-        return redirect("student");
-      
-    }
+      public function Edit(Request $request, $id){
+        $student = Students::findOrFail($id);
+         $student->name = $request->name;
+         $student->lastName = $request->lastname;
+         $student->score = $request->score;
+         $student->age = $request->age;
+         $student->gender =$request->gender;
+         $student->update();
+         return redirect("student");
+      }
+    
     public function destroy(Request $request, $id){
-      $student = Students::findOrFail($id);
-      $student->delete();
+      Students::findOrFail($id)->delete();
       return redirect("student");
     }
-    public function delete(){
-      Students::findOrFail(2)->delete();
-       
-      return "One item deleted";
-      
-    }
+    
+    
     public function showDeletedData(){
        $students = Students::withTrashed()->get();
       return $students;

@@ -33,12 +33,12 @@
                     <td class="border px-4 py-2">{{ $stundent->score }}</td>
                     <td class="border px-4 py-2"><a href="{{ URL('student/update', $stundent->id) }}">Update</a></td>
                     <td class="border px-4 py-2">
-                        <form action="{{ URL('student/delete',$stundent->id) }}" method="post" style="display:inline" onsubmit="return confirm('Do you really want to delete this item?')">
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit">Delete</button>
+                        <form action="{{ URL('student/delete', $stundent->id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete?')">
+                          @csrf
+                            @method('DELETE')
+                            <button type="submit">delete</button>
                         </form>
-                    
+                    </td>
                 </tr>
             @endforeach
         </table>
