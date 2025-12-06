@@ -26,6 +26,7 @@ class StudentsAddRequest extends FormRequest
         "lastname"=> "required|string",
         "score"=> "required|numeric|min:0|max:100",
         "age"=> "required|numeric|min:6|max:150",
+        
             //
         ];
     }

@@ -10,7 +10,7 @@
     <div class="max-w-6xl w-full p-6 mx-auto my-12">
         @if($errors->any())
         <ul class="flex bg-red-500 text-white  flex-col gap-2">
-            @foreach ($errors as $error)
+            @foreach ($errors->all() as $error)
             <li>{{ $error }}</li> 
             @endforeach
         </ul>
