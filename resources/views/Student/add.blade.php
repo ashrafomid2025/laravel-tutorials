@@ -22,18 +22,20 @@
  </div>
         <div class="border w-full">
             <h1 class="py-4 text-center text-2xl text-white bg-blue-500">Add Students</h1>
-            <form action="{{ URL('student/create') }}" class="flex flex-col gap-2 w-10/12 mx-auto my-2" method="post">
+            <form enctype="multipart/form-data" action="{{ URL('student/create') }}" class="flex flex-col gap-2 w-10/12 mx-auto my-2" method="post">
                 @csrf
-                {{-- cross-site request forgery --}}
-                <input max="8" required type="text" value="{{ old('name') }}" name="name" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="text" name="lastname" value="{{ old("lastname") }}" placeholder="Enter your last name" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="number" name="score" value="{{ old("score") }}" placeholder="Enter your score" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="number" name="age" value="{{ old("age") }}" placeholder="Enter your age" class="py-2 w-full focus:outline-0 border rounded-md">
+                {{-- cross-site request forgery,  old data --}}
+                <input  type="text"  name="name" value="{{ old('name') }}" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="text" name="lastname" value="{{ old('lastname') }}" placeholder="Enter your last name" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="number" name="score" value="{{ old('score') }}" placeholder="Enter your score" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="number" name="age" value="{{ old('age') }}" placeholder="Enter your age" class="py-2 w-full focus:outline-0 border rounded-md">
                 <label>Gender</label>
                 <div class="flex gap-7 ">
-                male <input type="radio" name="gender" value="m" {{ old("gender")==="m"? "checked":"" }}/>
-                female <input type="radio" name="gender" value="f" {{ old("gender")==="f"? "checked":"" }}/>
+                male <input type="radio" name="gender" value="m" {{ old('gender') ==="m"?"checked":"" }}/>
+                female <input type="radio" name="gender" value="f" {{ old('gender') === "f"? "checked":"" }}/>
                 </div>
+                <label for="image">profile picture</label>
+                <input type="file" accept="image/*" name="image" id="image"  class="py-2 w-full focus:outline-0 border rounded-md">
                 <button type="submit" class="py-2 bg-green-400 text-white text-center">Save</button>
             </form>
         </div>

@@ -26,7 +26,8 @@ class FormAddRequest extends FormRequest
           "lastname"=> "required|min:5|max:30",
           "score"=> "required|numeric|min:0|max:100",
           "age"=> "required|integer|min:6|max:50",
-          "gender"=> "required|in:m,f"
+          "gender"=> "required|in:m,f",
+          "image"=> "nullable|image|mimes:jpg,png,jpeg,gif|max:4096"
             //
         ];
     }

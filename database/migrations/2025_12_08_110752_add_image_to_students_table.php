@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('students', function (Blueprint $table) {
             //
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('image');
         });
     }
 
@@ -24,8 +24,7 @@ return new class extends Migration
     {
         Schema::table('students', function (Blueprint $table) {
             //
-            $table->dropForeign('user_id');
-            $table->dropColumn('user_id');
+            $table->dropColumn('image');
         });
     }
 };
