@@ -14,6 +14,7 @@
         </form>
         <table class="border w-full border-collapse mt-2">
             <tr>
+                <th class="border bg-blue-500 text-white px-4 py-2">Image</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">ID</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">Name</th>
                 <th class="border bg-blue-500 text-white px-4 py-2">Last Name</th>
@@ -25,6 +26,11 @@
             </tr>
             @foreach ($students as $stundent)
                 <tr>
+                    <td>
+                        @if ($stundent->image)
+                            <img src="{{ asset('storage/'.$stundent->image) }}" class="h-20 w-20" alt="image">
+                        @endif
+                    </td>
                     <td class="border px-4 py-2">{{ $stundent->id }}</td>
                     <td class="border px-4 py-2">{{ $stundent->name }}</td>
                     <td class="border px-4 py-2">{{ $stundent->lastName }}</td>
