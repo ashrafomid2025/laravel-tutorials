@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormAddRequest;
 use App\Http\Requests\StudentsAddRequest;
 use App\Models\Students;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use NunoMaduro\Collision\Adapters\Phpunit\Style;
@@ -132,7 +133,11 @@ class StudentsController extends Controller
       }
     
     public function destroy(Request $request, $id){
-      Students::findOrFail($id)->delete();
+      $student =Students::findOrFail($id);
+      if($student->image){
+        Storage::disk('public')->delete($student->image);
+      }
+      $student->delete();
       return redirect("student");
     }
     
