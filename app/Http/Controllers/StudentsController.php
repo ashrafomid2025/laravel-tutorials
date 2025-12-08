@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormAddRequest;
 use App\Http\Requests\StudentsAddRequest;
 use App\Models\Students;
 use Illuminate\Http\Request;
@@ -70,9 +71,10 @@ class StudentsController extends Controller
      })->paginate(15);
       return  view('Student.home', compact('students'));
     }
-    public function create(StudentsAddRequest $request){
-    
-        $student =   new Students();
+    public function create(FormAddRequest $request){
+        // form validation => 
+       
+      $student =  new Students();
         $student->name =$request->name;
         $student->lastName = $request->lastname;
         $student->score = $request->score;

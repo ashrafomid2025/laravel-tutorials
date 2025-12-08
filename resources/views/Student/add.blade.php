@@ -8,26 +8,31 @@
 </head>
 <body>
     <div class="max-w-6xl w-full p-6 mx-auto my-12">
-        @if($errors->any())
-        <ul class="flex bg-red-500 text-white  flex-col gap-2">
+ <div class="">
+   
+        @if ($errors->any())
+         <ol class="list-decimal list-inside bg-red-400 text-gray-200 p-2">
             @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li> 
+                <li>{{ $error }}</li>
             @endforeach
-        </ul>
+         </ol>
+            
         @endif
+    
+ </div>
         <div class="border w-full">
             <h1 class="py-4 text-center text-2xl text-white bg-blue-500">Add Students</h1>
             <form action="{{ URL('student/create') }}" class="flex flex-col gap-2 w-10/12 mx-auto my-2" method="post">
                 @csrf
                 {{-- cross-site request forgery --}}
-                <input type="text" name="name" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="text" name="lastname" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="number" name="score" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
-                <input type="number" name="age" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input max="8" required type="text" value="{{ old('name') }}" name="name" placeholder="Enter your name" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="text" name="lastname" value="{{ old("lastname") }}" placeholder="Enter your last name" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="number" name="score" value="{{ old("score") }}" placeholder="Enter your score" class="py-2 w-full focus:outline-0 border rounded-md">
+                <input type="number" name="age" value="{{ old("age") }}" placeholder="Enter your age" class="py-2 w-full focus:outline-0 border rounded-md">
                 <label>Gender</label>
                 <div class="flex gap-7 ">
-                male <input type="radio" name="gender" value="m"/>
-                female <input type="radio" name="gender" value="f"/>
+                male <input type="radio" name="gender" value="m" {{ old("gender")==="m"? "checked":"" }}/>
+                female <input type="radio" name="gender" value="f" {{ old("gender")==="f"? "checked":"" }}/>
                 </div>
                 <button type="submit" class="py-2 bg-green-400 text-white text-center">Save</button>
             </form>
