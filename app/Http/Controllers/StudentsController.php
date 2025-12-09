@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormAddRequest;
 use App\Http\Requests\StudentsAddRequest;
 use App\Models\Students;
-use Illuminate\Container\Attributes\Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use NunoMaduro\Collision\Adapters\Phpunit\Style;
