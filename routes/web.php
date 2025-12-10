@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SongsController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,9 @@ Route::prefix('student')->controller(StudentsController::class)->group(function(
     Route::get("update/{id}", 'update');
     Route::put('edit/{id}','Edit');
     Route::delete('delete/{id}', 'destroy');
+});
+Route::prefix('songs')->controller(SongsController::class)->group(function(){
+   Route::view('/add','Song.Insert');
+   Route::get('/', 'index');
+   Route::post('/insert','Create');
 });
