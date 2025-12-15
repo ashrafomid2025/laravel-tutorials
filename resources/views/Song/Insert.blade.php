@@ -12,7 +12,7 @@
         {{-- cross site request forgery --}}
         <input type="text" name="singer" placeholder="enter the singer name"  class="py-2 px-4 border">
         <input type="file" name="song" accept="audio/*">
-        <button type="submit">Save</button>
+        <button type="submit">Save the music</button>
     </form>
 </body>
 </html>
