@@ -37,3 +37,6 @@ Route::prefix('songs')->controller(SongsController::class)->group(function(){
    Route::get('/', 'index');
    Route::post('/insert','Create');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
