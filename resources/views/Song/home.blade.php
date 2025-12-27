@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="w-full max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold">All Favorite Songs</h1>
+        <h1 class="text-5xl font-bold">All Favorite Songs (Listen and Download)</h1>
         <div>
         @foreach ($songs as $song)
         <div class="w-full border flex flex-col gap-4 items-center rounded-2xl">    
